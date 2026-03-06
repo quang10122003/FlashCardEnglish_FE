@@ -1,0 +1,14 @@
+.SelectField {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  //   &__select {
+  //     width: 200px !important;
+  //   }
+
+  .ant-select-selector {
+    border-color: #f66233 !important;
+    box-shadow: none !important;
+  }
+}

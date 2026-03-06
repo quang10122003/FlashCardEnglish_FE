@@ -1,0 +1,177 @@
+import React from "react";
+import CustomerLayout from "../layouts/CustomerLayout";
+import AdminLayout from "../layouts/AdminLayout";
+import { Route, Routes } from "react-router-dom";
+import DashBoard from "../pages/DashBoard";
+import UserManagement from "../pages/UserManagement";
+import BlogManagement from "../pages/BlogManagement";
+import ToeicTestManagement from "../pages/ServerTestManagement";
+import PersonalInformation from "../pages/PersonalInformation";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import ForgotPassword from "../pages/ForgotPassword";
+import Register from "../pages/Register";
+import Feedback from "../pages/Feedback";
+import VocabularyTopic from "../pages/VocabularyTopic";
+import ToeicTests from "../pages/ToeicTests";
+import Blogs from "../pages/Blogs";
+import DetailTopic from "../pages/DetailTopic";
+import DetailListFalshCard from "../pages/DetailListFlashCard";
+import PracticeFlashCard from "../pages/PracticeFlashCard";
+import DetailExam from "../pages/DetailExam";
+import PracticeExam from "../pages/PracticeExam";
+import BlogCategoryManagent from "../pages/BlogCategoryManagement";
+import TestSetManagement from "../pages/TestSetManagement";
+import FeedbackManagement from "../pages/FeedbackManagement";
+import BlogDetail from "../pages/BlogDetail";
+import ResultExam from "../pages/ResultExam";
+import ReviewFlashCard from "../pages/ReviewFlashCard";
+import ReviewDetailListCard from "../pages/ReviewDetailListCard";
+import ReviewExam from "../pages/ReviewExam";
+import ScrollToTop from "../components/ScrollToTop";
+import { useEffect } from "react";
+import Quiz from "../pages/Quiz";
+import PikachuPractice from "../pages/PikachuPractice";
+import VnpayResult from "../pages/VnpayResult";
+import DisorderExamPage from "../pages/DisorderExamPage/";
+
+import PricingPage from "../pages/PricingPage";
+
+import CreateToeicExam from "../pages/CreateToeicExam";
+import PartDetailPage from "../pages/PartDetailPage";
+import PartDetailGroupPage from "../pages/PartDetailGroupPage";
+import DetailCustomToeicExam from "../pages/DetailToeicCustomExam";
+import CreateCustomExam from "../pages/CreateCustomExam";
+import ServerTestManagement from "../pages/ServerTestManagement";
+import UserTestManagement from "../pages/UserTestManagement";
+import ViewDetailToeicCustomExam from "../pages/ViewDetailToeicCustomExam";
+import DisorderPracticePage from "../pages/DisorderPracticePage";
+import DisorderExamDetailPage from "../pages/DisorderExamDetailPage";
+
+function MainRoutes() {
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      const prev = window.history.scrollRestoration;
+      window.history.scrollRestoration = "manual";
+      return () => {
+        window.history.scrollRestoration = prev;
+      };
+    }
+  }, []);
+  return (
+    <>
+      <ScrollToTop />
+      <Routes>
+        {/* Layout khách hàng */}
+        <Route path="/" element={<CustomerLayout />}>
+          <Route index element={<Home />} />
+          <Route path="Login" element={<Login />} />
+          <Route path="ForgotPassword" element={<ForgotPassword />} />
+          <Route path="Register" element={<Register />} />
+          <Route path="Feedback" element={<Feedback />} />
+          <Route path="VocabularyTopics" element={<VocabularyTopic />} />
+          <Route path="ToeicTests" element={<ToeicTests />} />
+          <Route path="VnpayResult/:txnRef" element={<VnpayResult />} />
+          <Route path="Blogs" element={<Blogs />} />
+          <Route path="Blogs/BlogDetail/:blogId" element={<BlogDetail />} />
+          <Route path="PersonalInformation" element={<PersonalInformation />} />
+          <Route
+            path="ReviewFlashCard/:topicId"
+            element={<ReviewFlashCard />}
+          />
+          <Route
+            path="ReviewFlashCard/ReviewDetailListCard/:flashcardId/:topicId"
+            element={<DetailListFalshCard />}
+          />
+          <Route path="ReviewExam/:examReviewId" element={<ReviewExam />} />
+          <Route
+            path="VocabularyTopics/DetailTopic/:topicId"
+            element={<DetailTopic />}
+          />
+          <Route path="PricingPage/:Id" element={<PricingPage />} />
+          <Route
+            path="VocabularyTopics/DetailTopic/:topicId/DetailListFlashCard/:flashcardId"
+            element={<DetailListFalshCard />}
+          />
+          <Route
+            path="VocabularyTopics/DetailTopic/:topicId/DetailListFlashCard/PracticeFlashCard/:flashcardId"
+            element={<PracticeFlashCard />}
+          />
+          <Route
+            path="VocabularyTopics/DetailTopic/:topicId/DetailListFlashCard/MiniGame/:flashcardId"
+            element={<PracticeFlashCard />}
+          />
+          <Route
+            path="VocabularyTopics/DetailTopic/:topicId/DetailListFlashCard/Quiz/:flashcardId"
+            element={<Quiz />}
+          />
+          <Route
+            path="VocabularyTopics/DetailTopic/:topicId/DetailListFlashCard/PikachuPractice/:flashcardId"
+            element={<PikachuPractice />}
+          />
+          <Route path="DetailExam/:id" element={<DetailExam />}>
+            <Route path="ResultExam/:resultId" element={<ResultExam />} />
+          </Route>
+          <Route path="PracticeFlashCard" element={<PracticeFlashCard />} />
+          <Route path="PracticeExam/:examId" element={<PracticeExam />} />
+
+          <Route path="CreateToeicExam" element={<CreateToeicExam />} />
+          <Route path="CreateCustomExam" element={<CreateCustomExam />} />
+          <Route
+            path="PartDetail/:examId/parts/:partNumber/single"
+            element={<PartDetailPage />}
+          />
+          <Route
+            path="PartDetailGroup/:examId/parts/:partNumber/group"
+            element={<PartDetailGroupPage />}
+          />
+          <Route
+            path="DetailToeicCustomExam/:id"
+            element={<DetailCustomToeicExam />}
+          />
+          <Route
+            path="ViewDetailToeicCustomExam/:id"
+            element={<ViewDetailToeicCustomExam />}
+          />
+
+          <Route path="CreateToeicExam" element={<CreateToeicExam />} />
+          <Route path="PartDetail/:examId/parts/:partNumber/single" element={<PartDetailPage />} />
+          <Route path="PartDetailGroup/:examId/parts/:partNumber/group" element={<PartDetailGroupPage />} />
+          <Route path="DetailToeicCustomExam/:id" element={<DetailCustomToeicExam />} />
+
+          <Route path="/disorder-exam/:examId" element={<DisorderExamPage />} />
+          <Route path="/disorder-exam/:examId/practice" element={<DisorderPracticePage />} />
+
+          <Route path="/disorder-exam/:examId/detail" element={<DisorderExamDetailPage />} />
+
+          <Route path="/disorder-exam/:examId/review/:reviewId" element={<DisorderPracticePage />} />
+        </Route>
+        {/* Layout quản trị viên */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<DashBoard />} />
+          <Route path="DashBoard" element={<DashBoard />} />
+          <Route path="UserManagement" element={<UserManagement />} />
+          <Route path="BlogManagement" element={<BlogManagement />} />
+          <Route
+            path="ServerTestManagement"
+            element={<ServerTestManagement />}
+          />
+          <Route path="UserTestManagement" element={<UserTestManagement />} />
+
+          <Route path="PersonalInformation" element={<PersonalInformation />} />
+          <Route
+            path="BlogCategoryManagement"
+            element={<BlogCategoryManagent />}
+          />
+          <Route path="TestSetManagement" element={<TestSetManagement />} />
+          <Route path="FeedbackManagement" element={<FeedbackManagement />} />
+        </Route>
+        {/* Route cho trang Forbidden*/}
+        {/* <Route path="/forbidden" element={<Forbidden />} /> */}
+        {/* Trang không tìm thấy */}
+        {/* <Route path="*" element={<PageNotFound />} /> */}
+      </Routes>
+    </>
+  );
+}
+export default MainRoutes;

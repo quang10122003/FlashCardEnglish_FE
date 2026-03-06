@@ -1,0 +1,111 @@
+.UserForm {
+    margin-top: 20px;
+
+    &__Contain-Button {
+        display: flex;
+        justify-content: flex-end;
+        // padding-top: 16px;
+        gap: 12px; // khoảng cách giữa các nút
+        // margin-top: 20px;
+    }
+
+    &__Accept {
+        min-width: 100px;
+        height: 36px;
+    }
+
+    &__Cancel {
+        min-width: 100px;
+        height: 36px;
+    }
+
+    &__Avatar-Col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__Avatar-FormItem {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 0; // bỏ margin mặc định Form.Item
+
+    }
+
+    &__Avatar-EditBlock {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // justify-content: center;
+        gap: 12px;
+        width: 100%;
+    }
+
+    &__Avatar-Img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        display: block;
+
+    }
+
+    &__ChangeAvatarBtn {
+        font-size: 14px;
+        border-color: #F66233;
+        color: #F66233;
+
+        &:hover {
+            background-color: #F66233 !important;
+            color: #fff !important;
+            border-color: #F66233 !important;
+        }
+    }
+
+    &__AvatarColumn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__Cancel {
+        background-color: #D51F2A;
+
+        &:hover {
+            background-color: #D51F2A !important;
+            color: #fff !important;
+        }
+    }
+
+    &__Accept {
+        background-color: #F66233;
+
+        &:hover {
+            background-color: #F66233 !important;
+        }
+    }
+}
+
+
+
+
+.ButtonIsEdit {
+
+    // Đổi màu icon (icon là thẻ SVG)
+    .anticon {
+        color: #BA9264; // ví dụ: xanh Ant Design
+    }
+
+    // Nếu muốn đổi màu khi hover
+    &:hover {
+        .anticon {
+            color: #BA9264;
+        }
+
+        color: #BA9264 !important;
+        border-color: #BA9264 !important;
+    }
+}

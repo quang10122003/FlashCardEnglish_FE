@@ -1,0 +1,528 @@
+.ToeicTests-page {
+  &__header {
+    background: linear-gradient(to right, #fda98e, #f9cccc);
+    padding: 40px 0;
+
+    .MainContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    &-createExam {
+      background-color: #e8f2ff;
+      font-weight: 500;
+      font-size: 15px;
+      border: none !important;
+      color: #35509a;
+
+      &:hover {
+        background-color: #e8f2ff !important;
+        color: #35509a !important;
+      }
+    }
+  }
+
+  &__ContainerSelect {
+    display: flex;
+    gap: 40px;
+    margin: 20px 0px;
+  }
+
+  &__Search {
+    border-color: #f66233 !important;
+    box-shadow: none !important;
+  }
+
+  &__listTest {
+    margin-top: 20px;
+    min-height: 350px;
+  }
+
+  .Test-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .Test-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px 16px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+
+    &__index {
+      background-color: #f97316;
+      color: white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      line-height: 24px;
+      font-size: 14px;
+      font-weight: bold;
+      margin-right: 16px;
+    }
+
+    &__title {
+      flex: 1;
+      font-size: 16px;
+      font-weight: 500;
+      color: #374151;
+    }
+
+    &__info {
+      font-size: 16px;
+      color: #3b82f6;
+      margin-left: 12px;
+      cursor: pointer;
+    }
+  }
+}
+
+.create-toeic-test-btn {
+  background-color: #f97316;
+  border: none;
+  float: right;
+  width: fit-content;
+  justify-content: end;
+
+  &:hover {
+    background-color: #f97316 !important;
+  }
+}
+
+/* Thêm các styles sau vào file ToeicTest.scss */
+
+/* ===== TABS STYLES ===== */
+.ToeicTests-page__tabs {
+  margin-bottom: 20px;
+
+  .ant-tabs-nav {
+    margin-bottom: 0;
+
+    &::before {
+      border-bottom: 1px solid #e8e8e8;
+    }
+  }
+
+  .ant-tabs-tab {
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #666;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: #ff8159;
+    }
+
+    &.ant-tabs-tab-active {
+      .ant-tabs-tab-btn {
+        color: #ff8159;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .ant-tabs-ink-bar {
+    background: #ff8159;
+    height: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* ===== CUSTOM TAB FILTER CONTAINER ===== */
+.ToeicTests-page__ContainerSelect--custom {
+  justify-content: flex-end;
+  padding: 16px 0;
+}
+
+/* ===== TEST ITEM WITH EDIT BUTTON ===== */
+.Test-item {
+  position: relative;
+
+  &--custom {
+    padding-right: 100px;
+    /* Thêm space cho actions */
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+  }
+
+  &__edit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    color: #666;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 129, 89, 0.1) !important;
+      color: #ff8159 !important;
+    }
+
+    .anticon {
+      font-size: 16px;
+    }
+  }
+
+  &__info {
+    color: #999;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #ff8159;
+    }
+  }
+}
+
+/* ===== EMPTY STATE ===== */
+.Test-list__empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+  font-size: 15px;
+  background: #fafafa;
+  border-radius: 12px;
+  border: 1px dashed #e0e0e0;
+}
+
+/* Thêm vào ToeicTest.scss */
+
+/* Badge cho loại đề custom */
+.Test-item__content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.Test-item__badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &--random {
+    background-color: #fff0e6;
+    color: #ff6b35;
+  }
+
+  &--toeic {
+    background-color: #e6f7ff;
+    color: #1890ff;
+  }
+}
+
+/* Nếu cần điều chỉnh layout Test-item */
+.Test-item {
+  &--custom {
+    .Test-item__title {
+      flex: none;
+      /* Không stretch */
+    }
+  }
+}
+
+.Test-item__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.Test-item__questions,
+.Test-item__duration {
+  font-size: 12px;
+  color: #888;
+}
+
+// Badge styling
+.Test-item__badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  &--random {
+    background: #000000;
+    color: #fff;
+  }
+
+  &--toeic {
+    background: #ff8159;
+    color: #fff;
+  }
+}
+
+// Custom exam item styling
+.Test-item--custom {
+  &:hover {
+    .Test-item__actions {
+      opacity: 1;
+    }
+  }
+
+  .Test-item__actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .Test-item__practice-btn {
+    color: #52c41a;
+
+    &:hover {
+      color: #73d13d;
+      background: rgba(82, 196, 26, 0.1);
+    }
+  }
+
+  .Test-item__edit-btn {
+    color: #1890ff;
+
+    &:hover {
+      color: #40a9ff;
+      background: rgba(24, 144, 255, 0.1);
+    }
+  }
+}
+
+// Empty state
+.Test-list__empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+  font-size: 16px;
+}
+
+.Test-item__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.Test-item__questions,
+.Test-item__duration {
+  font-size: 12px;
+  color: #888;
+}
+
+/* ==================== Badge styling ==================== */
+.Test-item__badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &--random {
+    background: #000000;
+    color: #fff;
+  }
+
+  &--toeic {
+    background: #ff8159;
+    color: #fff;
+  }
+}
+
+/* ==================== Custom exam item styling ==================== */
+.Test-item--custom {
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 129, 89, 0.05);
+
+    .Test-item__actions {
+      opacity: 1;
+    }
+  }
+
+  .Test-item__actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .Test-item__practice-btn {
+    color: #52c41a;
+    font-size: 16px;
+
+    &:hover {
+      color: #73d13d;
+      background: rgba(82, 196, 26, 0.1);
+    }
+  }
+
+  .Test-item__edit-btn {
+    color: #1890ff;
+    font-size: 16px;
+
+    &:hover {
+      color: #40a9ff;
+      background: rgba(24, 144, 255, 0.1);
+    }
+  }
+}
+
+/* ==================== Empty state ==================== */
+.Test-list__empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+/* ==================== Custom tab container ==================== */
+.ToeicTests-page__ContainerSelect--custom {
+  justify-content: flex-start;
+  padding: 16px 0;
+}
+.ToeicTests-page__ContainerSelect--custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    gap: 16px;
+}
+
+.ToeicTests-page__custom-filter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .filter-label {
+        font-size: 14px;
+        color: #666;
+        font-weight: 500;
+    }
+
+    .custom-type-select {
+        .ant-select-selector {
+            border-radius: 6px;
+        }
+    }
+}
+
+/* ==================== Meta info cho đề custom ==================== */
+.Test-item__meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.Test-item__questions,
+.Test-item__duration {
+    font-size: 12px;
+    color: #888;
+}
+
+/* ==================== Badge styling - KHÔNG GRADIENT ==================== */
+.Test-item__badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    /* ✅ TOEIC: Cam đậm, không gradient */
+    &--toeic {
+        background-color: #e65100; /* Cam đậm */
+        color: #fff;
+    }
+
+    /* ✅ Tự do: Đen, không gradient */
+    &--random {
+        background-color: #212121; /* Đen */
+        color: #fff;
+    }
+}
+
+/* ==================== Custom exam item styling ==================== */
+.Test-item--custom {
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: rgba(255, 129, 89, 0.05);
+        
+        .Test-item__actions {
+            opacity: 1;
+        }
+    }
+
+    .Test-item__actions {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        opacity: 0.7;
+        transition: opacity 0.2s;
+    }
+
+    /* ✅ Tất cả icon action cùng màu xanh */
+    .Test-item__action-btn {
+        color: #1890ff;
+        font-size: 16px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        transition: all 0.2s;
+
+        &:hover {
+            color: #40a9ff;
+            background: rgba(24, 144, 255, 0.1);
+        }
+    }
+}
+
+/* ==================== Empty state ==================== */
+.Test-list__empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: #888;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    margin: 20px 0;
+}

@@ -1,0 +1,186 @@
+.PracticeExam {
+  &__header {
+    background: linear-gradient(to right, #ED5F31 0%, #ff4000 100%);
+    padding: 32px 0;
+    color: white;
+
+    .MainContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    &-timer {
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-top: 24px;
+
+    &-left {
+      flex: 1;
+    }
+
+    &-right {
+      width: 200px;
+      position: sticky;
+      top: 100px; // 👈 điều chỉnh tùy theo chiều cao header
+      align-self: flex-start;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      background-color: #fff;
+      padding: 16px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  &__groupCard {
+    margin-bottom: 24px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+  }
+
+  &__questionCard {
+    margin-top: 16px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+  }
+
+  &__image {
+    display: block;
+    margin-bottom: 12px;
+    max-width: 100%;
+    max-height: 360px;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  &__btnQuestion {
+    width: 40px;
+    height: 40px;
+    margin: 4px;
+    padding: 0;
+    border-radius: 50%;
+    font-weight: bold;
+
+    &.answered {
+      background-color: #22c55e;
+      color: white;
+    }
+  }
+}
+
+.PracticeExam__title-part {
+  margin-top: 16px;
+  font-weight: bold;
+}
+
+.PracticeExam__btnQuestion {
+  width: 40px;
+  height: 40px;
+  margin: 4px;
+  padding: 0;
+  border-radius: 50%;
+  font-weight: bold;
+
+  &.answered {
+    background-color: #ED5F31;
+    color: white;
+  }
+
+  &.active {
+    border: 2px solid #3b82f6;
+  }
+}
+.btn{
+  background-color: #ED5F31;
+}
+ReviewExam__questionCard{
+  
+}
+.ReviewExam__questionCard .ant-card-head-title{
+  color: #ED5F31;
+}
+/* ===== Pudding back-to-top (giữa đáy) ===== */
+.PracticeExam__pudding {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 10px);
+  z-index: 1200;
+
+  height: 34px;
+  min-width: 200px;
+  padding: 0 18px;
+
+  /* Hình chữ nhật bo góc trên, không có cạnh dưới */
+  border: 2px solid #ED5F31;
+  border-bottom: 0;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  background: rgba(255, 255, 255, 0.96);
+  color: #ED5F31;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+
+  box-shadow:
+    0 -10px 24px rgba(0, 0, 0, 0.10),
+    0 -1px 0 rgba(237, 95, 49, 0.35) inset;
+  backdrop-filter: saturate(120%) blur(4px);
+
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 150ms ease,
+    box-shadow 200ms ease,
+    border-color 180ms ease;
+
+  &:hover {
+    background: #ED5F31;
+    color: #fff;
+    transform: translateX(-50%) translateY(-2px);
+    border-color: #ED5F31;
+    box-shadow:
+      0 -14px 30px rgba(237, 95, 49, 0.32),
+      0 -1px 0 rgba(255, 255, 255, 0.25) inset;
+  }
+
+  &:active {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.PracticeExam__puddingIcon {
+  display: block;
+  color: currentColor; /* icon theo màu chữ */
+}
+
+@media (max-width: 576px) {
+  .PracticeExam__pudding {
+    height: 48px;
+    min-width: 170px;
+    padding: 0 14px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+}

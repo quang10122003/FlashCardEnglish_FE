@@ -1,0 +1,409 @@
+$bg: #f6f8fb;
+$card-bg: #ffffff;
+$text: #1f2937;
+$muted: #6b7280;
+$accent: #3b82f6;
+$success: #10b981;
+$danger: #ef4444;
+$border: #e5e7eb;
+$highlight: #fef3c7;
+
+.VnpayResult {
+  min-height: 100vh;
+  padding: 48px 20px;
+  background: linear-gradient(135deg, $bg 0%, #e8f0f7 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  &__card {
+    width: 100%;
+    max-width: 1000px;
+    background: $card-bg;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    box-sizing: border-box;
+    animation: slideUp 0.5s ease-out;
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid $border;
+  }
+
+  &__title {
+    font-size: 28px;
+    color: $text;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  &__subtitle {
+    font-size: 13px;
+    color: $muted;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    white-space: nowrap;
+    animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    &.success {
+      background: rgba($success, 0.1);
+      color: $success;
+      border: 1px solid rgba($success, 0.3);
+    }
+
+    &.failure {
+      background: rgba($danger, 0.1);
+      color: $danger;
+      border: 1px solid rgba($danger, 0.3);
+    }
+
+    &-icon {
+      font-size: 20px;
+    }
+
+    &-text {
+      font-size: 14px;
+    }
+  }
+
+  &__summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 24px 0 32px;
+    padding: 24px;
+    background: linear-gradient(
+      135deg,
+      rgba($accent, 0.03) 0%,
+      rgba($success, 0.03) 100%
+    );
+    border-radius: 12px;
+    border: 1px solid rgba($accent, 0.1);
+
+    &-item {
+      .label {
+        color: $muted;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 8px;
+      }
+
+      .value {
+        color: $text;
+        font-size: 16px;
+        font-weight: 700;
+        word-break: break-all;
+
+        &.highlight {
+          font-size: 20px;
+          color: $success;
+          background: rgba($success, 0.08);
+          padding: 8px 12px;
+          border-radius: 8px;
+          display: inline-block;
+        }
+
+        &.copy-item {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          cursor: pointer;
+          padding: 6px 12px;
+          border-radius: 6px;
+          transition: all 0.2s ease;
+          border: 1px solid transparent;
+
+          &:hover {
+            background: rgba($accent, 0.1);
+            color: $accent;
+            border-color: $accent;
+
+            .copy-icon {
+              opacity: 1;
+            }
+          }
+
+          .copy-icon {
+            opacity: 0;
+            font-size: 12px;
+            transition: opacity 0.2s ease;
+          }
+        }
+      }
+    }
+  }
+
+  &__detail {
+    margin-top: 32px;
+  }
+
+  &__detail-title {
+    margin: 0 0 16px 0;
+    color: $text;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  &__table {
+    border-radius: 12px;
+    border: 1px solid $border;
+    overflow: hidden;
+    background: $card-bg;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 35% 12% 15% 38%;
+    gap: 0;
+    padding: 16px 18px;
+    align-items: center;
+    border-bottom: 1px solid $border;
+    background: $card-bg;
+    transition: background-color 0.2s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: rgba($accent, 0.02);
+    }
+
+    &--head {
+      background: linear-gradient(
+        135deg,
+        rgba($accent, 0.08) 0%,
+        rgba($accent, 0.04) 100%
+      );
+      font-weight: 700;
+      color: $accent;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      padding: 14px 18px;
+    }
+
+    .col {
+      &--param {
+        .param-name {
+          color: $text;
+          font-weight: 600;
+          font-size: 14px;
+        }
+
+        .param-desc {
+          color: $muted;
+          font-size: 12px;
+          margin-top: 4px;
+          line-height: 1.4;
+        }
+      }
+
+      &--type {
+        color: $muted;
+        font-size: 13px;
+      }
+
+      &--req {
+        font-weight: 700;
+        color: $success;
+        font-size: 13px;
+      }
+
+      &--value {
+        color: $text;
+        font-size: 14px;
+
+        .value-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          word-break: break-all;
+
+          .copy-icon-small {
+            flex-shrink: 0;
+            cursor: pointer;
+            color: $muted;
+            opacity: 0;
+            transition: all 0.2s ease;
+            font-size: 12px;
+
+            &:hover {
+              color: $accent;
+              transform: scale(1.1);
+            }
+          }
+
+          &:hover .copy-icon-small {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  &__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: end;
+    margin-top: 24px;
+    flex-wrap: wrap;
+
+    // Style chung cho tất cả button
+    .ant-btn {
+      border-radius: 10px;
+      height: 42px;
+      padding: 0 18px;
+      font-weight: 500;
+      transition: all 0.25s ease;
+
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    // Button default → cũng thành màu cam
+    .ant-btn-default {
+      color: #ff6b3d;
+      border-color: #ff6b3d;
+      background: #fff;
+
+      &:hover,
+      &:focus {
+        color: #fff !important;
+        background: #ff6b3d !important;
+        border-color: #ff6b3d !important;
+        box-shadow: 0 4px 12px rgba(255, 107, 61, 0.35);
+        transform: translateY(-1px);
+      }
+    }
+
+    // Button primary → cam đậm hơn chút
+    .ant-btn-primary {
+      background: #ff6b3d;
+      border-color: #ff6b3d;
+
+      &:hover,
+      &:focus {
+        background: #ff835d !important;
+        border-color: #ff835d !important;
+        box-shadow: 0 4px 14px rgba(255, 107, 61, 0.45);
+        transform: translateY(-1px);
+      }
+    }
+
+    // Icon cũng đổi màu theo text
+    .anticon {
+      font-size: 15px;
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .VnpayResult {
+    padding: 24px;
+
+    &__card {
+      padding: 24px;
+    }
+
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    &__summary {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__row {
+      grid-template-columns: 40% 15% 20% 25%;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .VnpayResult {
+    padding: 16px;
+
+    &__card {
+      padding: 16px;
+    }
+
+    &__title {
+      font-size: 20px;
+    }
+
+    &__summary {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 16px;
+    }
+
+    &__row {
+      grid-template-columns: 1fr;
+
+      .col {
+        padding: 8px 0;
+
+        &--param {
+          border-bottom: 1px solid $border;
+          padding-bottom: 8px;
+          margin-bottom: 8px;
+        }
+      }
+    }
+
+    &__actions {
+      flex-direction: column;
+      gap: 10px;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

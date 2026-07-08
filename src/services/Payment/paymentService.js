@@ -5,10 +5,6 @@ export const getPaymentByTxnRef = async (txnRef) => {
   const response = await get(`api/payment/${txnRef}`);
   return response;
 };
-export const getPaymentsByUser = async (userId) => {
-  const response = await get(`api/payment/getPaymentsByUser?userId=${userId}`);
-  return response;
-};
 export const createURLPayment = async (values) => {
   const result = await post(values, `/api/payment/vnpay/create`, true);
   return result;

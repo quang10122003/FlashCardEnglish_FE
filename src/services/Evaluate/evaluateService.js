@@ -13,7 +13,7 @@ export const UpdateEvaluate = async (value, id) => {
   return result;
 };
 export const CreateEvaluate = async (value) => {
-  const result = await postFormData("api/blog/create", value);
+  const result = await postFormData("api/evaluate/create", value);
   return result;
 };
 

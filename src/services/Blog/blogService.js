@@ -1,7 +1,7 @@
 import { del, get, postFormData, put, putFormData } from "../../utils/request";
 
 export const GetAllBlogs = async () => {
-  const result = await get("http://localhost:8080/api/blog/getAll");
+  const result = await get("api/blog/getAll");
   console.log(result);
   return result;
 };

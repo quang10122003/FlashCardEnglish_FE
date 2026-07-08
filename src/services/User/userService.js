@@ -1,12 +1,13 @@
-import { stringify } from "ajv";
 import { del, get, putFormData } from "../../utils/request";
+
+const API_DOMAIN = process.env.REACT_APP_DOMAIN_BE || process.env.DOMAIN_BE || "http://localhost:8080";
 
 export const GetAllUsers = async () => {
   const response = await get("api/user/getAllUsers");
   return response;
 }
 export const DeleteUser = async (id) => {
-  const response= await del(`api/user/delete/${id}`);
+  const response= await del(`api/user/admin/delete/${id}`);
   return response;
 };
 export const UpdateUser = async (value) => {
@@ -18,7 +19,7 @@ export const GetDetailUser = async (id) => {
   return response;
 };
 export const RenewalTokenAPI = async (renewalToken) => {
-  const response = await fetch("/api/user/renewalToken", {
+  const response = await fetch(`${API_DOMAIN}/api/user/renewalToken`, {
     method: "GET",
     headers: {
       "Authorization": `Bearer ${renewalToken}`,
@@ -31,5 +32,6 @@ export const RenewalTokenAPI = async (renewalToken) => {
     error.response = response;
     throw error;
   }
-  return response;
+  const payload = await response.json();
+  return payload?.data || payload;
 };

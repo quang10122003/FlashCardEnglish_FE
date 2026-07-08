@@ -1,7 +1,7 @@
 import "./Login.scss";
 import Poster from "../../assets/images/posterLogin.png";
 import { Form, Input, Button, Checkbox } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { post } from "../../utils/request";
 import axios from "axios";
@@ -13,6 +13,7 @@ import { showErrorMessage } from "../../utils/alertHelper";
 
 export default function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
 
@@ -38,11 +39,13 @@ export default function Login() {
       );
       console.log("-------------DAta   ", data);
       if (data?.accessToken) {
+        const redirectPath =
+          location.state?.from?.pathname && !location.state.from.pathname.startsWith("/admin")
+            ? location.state.from.pathname
+            : null;
 
-        login(data); // cập nhật context
+        login(data, redirectPath); // cập nhật context
         message.success("Đăng nhập thành công!");
-        if (data.role != "ADMIN") navigate("/");
-        else navigate("/admin");
       } else {
         message.error("Đăng nhập thất bại!");
       }

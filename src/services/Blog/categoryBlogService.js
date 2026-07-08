@@ -17,6 +17,6 @@ export const CreateCategoryBlog = async (value) => {
   return result;
 };
 export const GetCategoryBlogById = async (id) => {
-  const result = await get(`api/blog/category/getById/${id}`);
+  const result = await get(`api/blog/id/${id}`);
   return result;
 };

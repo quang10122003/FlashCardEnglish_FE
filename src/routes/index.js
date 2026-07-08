@@ -47,6 +47,7 @@ import UserTestManagement from "../pages/UserTestManagement";
 import ViewDetailToeicCustomExam from "../pages/ViewDetailToeicCustomExam";
 import DisorderPracticePage from "../pages/DisorderPracticePage";
 import DisorderExamDetailPage from "../pages/DisorderExamDetailPage";
+import RequireAuth from "../components/RequireAuth";
 
 function MainRoutes() {
   useEffect(() => {
@@ -68,13 +69,11 @@ function MainRoutes() {
           <Route path="Login" element={<Login />} />
           <Route path="ForgotPassword" element={<ForgotPassword />} />
           <Route path="Register" element={<Register />} />
-          <Route path="Feedback" element={<Feedback />} />
           <Route path="VocabularyTopics" element={<VocabularyTopic />} />
           <Route path="ToeicTests" element={<ToeicTests />} />
           <Route path="VnpayResult/:txnRef" element={<VnpayResult />} />
           <Route path="Blogs" element={<Blogs />} />
           <Route path="Blogs/BlogDetail/:blogId" element={<BlogDetail />} />
-          <Route path="PersonalInformation" element={<PersonalInformation />} />
           <Route
             path="ReviewFlashCard/:topicId"
             element={<ReviewFlashCard />}
@@ -83,88 +82,89 @@ function MainRoutes() {
             path="ReviewFlashCard/ReviewDetailListCard/:flashcardId/:topicId"
             element={<DetailListFalshCard />}
           />
-          <Route path="ReviewExam/:examReviewId" element={<ReviewExam />} />
-          <Route
-            path="VocabularyTopics/DetailTopic/:topicId"
-            element={<DetailTopic />}
-          />
           <Route path="PricingPage/:Id" element={<PricingPage />} />
-          <Route
-            path="VocabularyTopics/DetailTopic/:topicId/DetailListFlashCard/:flashcardId"
-            element={<DetailListFalshCard />}
-          />
-          <Route
-            path="VocabularyTopics/DetailTopic/:topicId/DetailListFlashCard/PracticeFlashCard/:flashcardId"
-            element={<PracticeFlashCard />}
-          />
-          <Route
-            path="VocabularyTopics/DetailTopic/:topicId/DetailListFlashCard/MiniGame/:flashcardId"
-            element={<PracticeFlashCard />}
-          />
-          <Route
-            path="VocabularyTopics/DetailTopic/:topicId/DetailListFlashCard/Quiz/:flashcardId"
-            element={<Quiz />}
-          />
-          <Route
-            path="VocabularyTopics/DetailTopic/:topicId/DetailListFlashCard/PikachuPractice/:flashcardId"
-            element={<PikachuPractice />}
-          />
-          <Route path="DetailExam/:id" element={<DetailExam />}>
-            <Route path="ResultExam/:resultId" element={<ResultExam />} />
+          <Route element={<RequireAuth />}>
+            <Route path="ReviewExam/:examReviewId" element={<ReviewExam />} />
+            <Route
+              path="VocabularyTopics/DetailTopic/:topicId"
+              element={<DetailTopic />}
+            />
+            <Route
+              path="VocabularyTopics/DetailTopic/:topicId/DetailListFlashCard/:flashcardId"
+              element={<DetailListFalshCard />}
+            />
+            <Route
+              path="VocabularyTopics/DetailTopic/:topicId/DetailListFlashCard/PracticeFlashCard/:flashcardId"
+              element={<PracticeFlashCard />}
+            />
+            <Route
+              path="VocabularyTopics/DetailTopic/:topicId/DetailListFlashCard/MiniGame/:flashcardId"
+              element={<PracticeFlashCard />}
+            />
+            <Route
+              path="VocabularyTopics/DetailTopic/:topicId/DetailListFlashCard/Quiz/:flashcardId"
+              element={<Quiz />}
+            />
+            <Route
+              path="VocabularyTopics/DetailTopic/:topicId/DetailListFlashCard/PikachuPractice/:flashcardId"
+              element={<PikachuPractice />}
+            />
           </Route>
-          <Route path="PracticeFlashCard" element={<PracticeFlashCard />} />
-          <Route path="PracticeExam/:examId" element={<PracticeExam />} />
-
-          <Route path="CreateToeicExam" element={<CreateToeicExam />} />
-          <Route path="CreateCustomExam" element={<CreateCustomExam />} />
-          <Route
-            path="PartDetail/:examId/parts/:partNumber/single"
-            element={<PartDetailPage />}
-          />
-          <Route
-            path="PartDetailGroup/:examId/parts/:partNumber/group"
-            element={<PartDetailGroupPage />}
-          />
-          <Route
-            path="DetailToeicCustomExam/:id"
-            element={<DetailCustomToeicExam />}
-          />
-          <Route
-            path="ViewDetailToeicCustomExam/:id"
-            element={<ViewDetailToeicCustomExam />}
-          />
-
-          <Route path="CreateToeicExam" element={<CreateToeicExam />} />
-          <Route path="PartDetail/:examId/parts/:partNumber/single" element={<PartDetailPage />} />
-          <Route path="PartDetailGroup/:examId/parts/:partNumber/group" element={<PartDetailGroupPage />} />
-          <Route path="DetailToeicCustomExam/:id" element={<DetailCustomToeicExam />} />
-
-          <Route path="/disorder-exam/:examId" element={<DisorderExamPage />} />
-          <Route path="/disorder-exam/:examId/practice" element={<DisorderPracticePage />} />
-
-          <Route path="/disorder-exam/:examId/detail" element={<DisorderExamDetailPage />} />
-
-          <Route path="/disorder-exam/:examId/review/:reviewId" element={<DisorderPracticePage />} />
+          <Route path="DetailExam/:id" element={<DetailExam />}>
+            <Route element={<RequireAuth />}>
+              <Route path="ResultExam/:resultId" element={<ResultExam />} />
+            </Route>
+          </Route>
+          <Route element={<RequireAuth />}>
+            <Route path="PracticeFlashCard" element={<PracticeFlashCard />} />
+            <Route path="Feedback" element={<Feedback />} />
+            <Route path="PersonalInformation" element={<PersonalInformation />} />
+            <Route path="PracticeExam/:examId" element={<PracticeExam />} />
+            <Route path="CreateToeicExam" element={<CreateToeicExam />} />
+            <Route
+              path="PartDetail/:examId/parts/:partNumber/single"
+              element={<PartDetailPage />}
+            />
+            <Route
+              path="PartDetailGroup/:examId/parts/:partNumber/group"
+              element={<PartDetailGroupPage />}
+            />
+            <Route
+              path="DetailToeicCustomExam/:id"
+              element={<DetailCustomToeicExam />}
+            />
+            <Route path="CreateCustomExam" element={<CreateCustomExam />} />
+            <Route
+              path="ViewDetailToeicCustomExam/:id"
+              element={<ViewDetailToeicCustomExam />}
+            />
+            <Route path="/disorder-exam/:examId" element={<DisorderExamPage />} />
+            <Route path="/disorder-exam/:examId/practice" element={<DisorderPracticePage />} />
+            <Route path="/disorder-exam/:examId/detail" element={<DisorderExamDetailPage />} />
+            <Route path="/disorder-exam/:examId/review/:reviewId" element={<DisorderPracticePage />} />
+          </Route>
         </Route>
         {/* Layout quản trị viên */}
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<DashBoard />} />
-          <Route path="DashBoard" element={<DashBoard />} />
-          <Route path="UserManagement" element={<UserManagement />} />
-          <Route path="BlogManagement" element={<BlogManagement />} />
-          <Route
-            path="ServerTestManagement"
-            element={<ServerTestManagement />}
-          />
-          <Route path="UserTestManagement" element={<UserTestManagement />} />
+        <Route element={<RequireAuth />}>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<DashBoard />} />
+            <Route path="DashBoard" element={<DashBoard />} />
+            <Route path="UserManagement" element={<UserManagement />} />
+            <Route path="BlogManagement" element={<BlogManagement />} />
+            <Route
+              path="ServerTestManagement"
+              element={<ServerTestManagement />}
+            />
+            <Route path="UserTestManagement" element={<UserTestManagement />} />
 
-          <Route path="PersonalInformation" element={<PersonalInformation />} />
-          <Route
-            path="BlogCategoryManagement"
-            element={<BlogCategoryManagent />}
-          />
-          <Route path="TestSetManagement" element={<TestSetManagement />} />
-          <Route path="FeedbackManagement" element={<FeedbackManagement />} />
+            <Route path="PersonalInformation" element={<PersonalInformation />} />
+            <Route
+              path="BlogCategoryManagement"
+              element={<BlogCategoryManagent />}
+            />
+            <Route path="TestSetManagement" element={<TestSetManagement />} />
+            <Route path="FeedbackManagement" element={<FeedbackManagement />} />
+          </Route>
         </Route>
         {/* Route cho trang Forbidden*/}
         {/* <Route path="/forbidden" element={<Forbidden />} /> */}

@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@ant-design/charts": "^2.2.7",
+    "@ant-design/icons": "^6.3.2",
+    "@ant-design/plots": "^2.6.8",
     "@rive-app/canvas": "^2.32.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -50,6 +52,8 @@
     ]
   },
   "devDependencies": {
-    "ajv": "^7.2.4"
+    "@vitejs/plugin-react": "^6.0.3",
+    "ajv": "^7.2.4",
+    "vite": "^8.1.3"
   }
 }

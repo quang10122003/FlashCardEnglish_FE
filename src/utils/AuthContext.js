@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const login = async (data) => {
+  const login = async (data, redirectTo = null) => {
     localStorage.setItem("accessToken", data.accessToken);
     localStorage.setItem("renewalToken", data.renewalToken);
     localStorage.setItem("userId", data.userId);
@@ -87,10 +87,12 @@ export const AuthProvider = ({ children }) => {
     const result = await GetDetailUser(data.userId, data.accessToken);
     localStorage.setItem("user", JSON.stringify(result));
     setUser(result);
-    if(data.role == "USER")
-    navigate("/", { replace: true });  
-  else if(data.role == "ADMIN")
-    navigate("/admin", { replace: true });  
+    if (data.role === "ADMIN") {
+      navigate("/admin", { replace: true });
+      return;
+    }
+
+    navigate(redirectTo || "/", { replace: true });
 
               // ✅ điều hướng sau login
   };

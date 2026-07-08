@@ -1,7 +1,7 @@
 import { showErrorMessage } from "./alertHelper";
 import { RenewalTokenAPI } from "../services/User/userService";
 
-const API_DOMAIN = "http://localhost:8080";
+const API_DOMAIN = process.env.DOMAIN_BE || "http://localhost:8080";
 
 const ACCEPT_ONLY = { Accept: "application/json" };
 

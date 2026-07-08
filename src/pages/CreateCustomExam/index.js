@@ -120,69 +120,15 @@
 //   const totalCount = items.length;
 //   const checkedCount = checkedIds.length;
 //   const checkAll = checkedCount === totalCount && totalCount > 0;
-//   const indeterminate = checkedCount > 0 && checkedCount < totalCount;
-
-//   useEffect(() => {
-//     // try to load existing exam items when examId provided
-//     let cancelled = false;
-//     const load = async () => {
-//       if (!examId) return;
-//       try {
-//         const res = await get(`/api/exam/detail/${examId}`, true);
-//         if (cancelled) return;
-//         const groupQuestions = Array.isArray(res?.groupQuestions)
-//           ? res.groupQuestions
-//           : [];
-//         const plainQuestions = Array.isArray(res?.questions)
-//           ? res.questions
-//           : [];
-//         setGroups((groupQuestions || []).map((g) => ({ ...g })));
-//         setQuestions((plainQuestions || []).map((q) => ({ ...q })));
-//       } catch (e) {
-//         // ignore, page is primarily a UI scaffold
-//       }
-//     };
-//     load();
-//     return () => {
-//       cancelled = true;
-//     };
-//   }, [examId]);
-
-//   const toggleItemCheck = (type, id, checked) => {
-//     const key = (type === "group" ? ID_PREFIX_GROUP : ID_PREFIX_QUESTION) + id;
-//     setCheckedIds((prev) => {
-//       if (checked) return Array.from(new Set([...prev, key]));
-//       return prev.filter((x) => x !== key);
-//     });
-//   };
-
-//   const handleCheckAllChange = (e) => {
-//     if (e.target.checked) {
-//       const allKeys = items.map(
-//         (it) =>
-//           (it.type === "group" ? ID_PREFIX_GROUP : ID_PREFIX_QUESTION) + it.id,
-//       );
-//       setCheckedIds(allKeys);
-//     } else setCheckedIds([]);
-//   };
-
-//   const handleContributeSelected = async () => {
-//     if (checkedIds.length === 0) return;
-//     const confirmed = await confirmBasic(
-//       "Bạn muốn đóng góp các mục đã chọn vào ngân hàng đề?",
-//     );
-//     if (!confirmed) return;
-
-//     // simulate contribute: mark local items as contributed
-//     const groupKeys = checkedIds
-//       .filter((k) => k.startsWith(ID_PREFIX_GROUP))
-//       .map((k) => Number(k.replace(ID_PREFIX_GROUP, "")));
-//     const questionKeys = checkedIds
-//       .filter((k) => k.startsWith(ID_PREFIX_QUESTION))
-//       .map((k) => Number(k.replace(ID_PREFIX_QUESTION, "")));
-
-//     setGroups((prev) =>
-//       prev.map((g) =>
+//	return (
+//		<div className="MainContainer" style={{ padding: "24px" }}>
+//			<h2>Đang cập nhật chức năng tạo đề tùy chỉnh</h2>
+//			<p>
+//				Màn hình này hiện chưa được hoàn thiện trong source hiện tại. Bạn có thể
+//				dùng các luồng đề TOEIC hệ thống hoặc đề tự tạo hiện có.
+//			</p>
+//		</div>
+//	);
 //         groupKeys.includes(g.id) ? { ...g, isContribute: true } : g,
 //       ),
 //     );
@@ -501,3 +447,17 @@
 //     </div>
 //   );
 // }
+
+import React from "react";
+
+export default function CreateCustomExam() {
+	return (
+		<div className="MainContainer" style={{ padding: "24px" }}>
+			<h2>Đang cập nhật chức năng tạo đề tùy chỉnh</h2>
+			<p>
+				Màn hình này hiện chưa được hoàn thiện trong source hiện tại. Bạn có thể
+				dùng các luồng đề TOEIC hệ thống hoặc đề tự tạo hiện có.
+			</p>
+		</div>
+	);
+}

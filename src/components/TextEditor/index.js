@@ -15,7 +15,7 @@ export default function TextEditor({
     <div className={disabled ? "editor-disabled" : ""}>
       <Editor
         key={disabled ? "disabled" : "enabled"}
-        apiKey="wn99n1krsuyn1l9t6cx1ko409ac7mzaaurf5bc2cj9jzrrfz" // hoặc bỏ qua nếu dùng bản community
+        apiKey={process.env.REACT_APP_TINYMCE_API_KEY || ""}
         value={value}
         onEditorChange={onChange}
         init={{
@@ -54,7 +54,9 @@ export default function TextEditor({
             }
           },
           language: "vi",
-          language_url: "https://cdn.jsdelivr.net/npm/tinymce-i18n/langs/vi.js", // CDN tiếng Việt
+          language_url:
+            process.env.REACT_APP_TINYMCE_LANGUAGE_URL ||
+            "https://cdn.jsdelivr.net/npm/tinymce-i18n/langs/vi.js",
         }}
       />
     </div>
